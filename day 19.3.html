@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Storage Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #saveBtn {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #loadBtn {
+      background-color: #2196f3;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Your Details</h2>
+    <input type="text" id="name" placeholder="Enter your name"><br>
+    <input type="number" id="age" placeholder="Enter your age"><br>
+    <button id="saveBtn" onclick="saveData()">Save</button>
+    <button id="loadBtn" onclick="loadData()">Load</button>
+  </div>
+
+  <script>
+    function saveData() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      localStorage.setItem("name", name);
+      localStorage.setItem("age", age);
+      alert("Data saved to localStorage!");
+    }
+
+    function loadData() {
+      const name = localStorage.getItem("name");
+      const age = localStorage.getItem("age");
+
+      if (name !== null && age !== null) {
+        document.getElementById("name").value = name;
+        document.getElementById("age").value = age;
+        alert("Data loaded from localStorage!");
+      } else {
+        alert("No data found in localStorage.");
+      }
+    }
+  </script>
+
+</body>
+</html>
